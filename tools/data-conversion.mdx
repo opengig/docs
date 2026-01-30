@@ -1,0 +1,242 @@
+---
+title: "Data Conversion & Processing"
+description: "Tools for converting, filtering, and processing genomic data formats"
+icon: "arrow-right-arrow-left"
+---
+
+## Overview
+
+This collection of 12 tools handles data conversion between different formats, file processing, and variant filtering operations essential for genomic analysis workflows.
+
+---
+
+## File Preview & Inspection
+
+<AccordionGroup>
+  <Accordion title="first_k_lines_of_csv" icon="eye">
+    ### Preview the first K lines of a CSV file
+    
+    **Usage:** Data preview and structure understanding
+    
+    **Description:**
+    Quickly inspect the structure and first few rows of large CSV files without loading the entire dataset. Useful for understanding column headers, data types, and verifying file integrity before processing.
+    
+    **When to use:**
+    - Before loading large datasets into memory
+    - Verifying CSV structure and formatting
+    - Quick data quality checks
+    - Understanding column organization
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Format Conversion Tools
+
+<AccordionGroup>
+  <Accordion title="csv_to_vcf" icon="file-export">
+    ### Convert CSV data to VCF format
+    
+    **Usage:** Format conversion for genomic analysis
+    
+    **Description:**
+    Transform CSV data containing genomic variants into standard VCF (Variant Call Format) files. Enables compatibility with downstream genomic analysis tools and databases that require VCF input.
+    
+    **Key Features:**
+    - Preserves variant information during conversion
+    - Generates properly formatted VCF headers
+    - Supports custom field mapping
+    - Validates output format
+  </Accordion>
+
+  <Accordion title="convert_xlsx_to_csv" icon="file-excel">
+    ### Transform Excel spreadsheets to CSV
+    
+    **Usage:** Format conversion between delimited files
+    
+    **Description:**
+    Convert Excel files (.xlsx) with multiple sheets to CSV format for easier data processing and integration with command-line tools. Each sheet can be converted separately or combined into a single CSV.
+    
+    **Key Features:**
+    - Multi-sheet support
+    - Preserves data types
+    - Handles complex Excel formatting
+    - Batch conversion capabilities
+  </Accordion>
+
+  <Accordion title="convert_tsv_to_csv" icon="file-lines">
+    ### Convert tab-separated values to comma-separated values
+    
+    **Usage:** Format conversion between delimited files
+    
+    **Description:**
+    Transform tab-separated files (TSV) into comma-separated files (CSV) for standardization. Essential for tools that expect CSV format while maintaining data integrity through the conversion.
+    
+    **Key Features:**
+    - Handles special characters correctly
+    - Preserves data integrity
+    - Supports large files
+    - Customizable delimiters
+  </Accordion>
+
+  <Accordion title="genomic_to_vcf" icon="dna">
+    ### Convert genomic data formats to VCF
+    
+    **Usage:** Standardize genomic file formats
+    
+    **Description:**
+    Convert various genomic data formats (BAM, SAM, PLINK, etc.) into standard VCF format. Enables integration with modern genomic analysis pipelines and population databases.
+    
+    **Supported Input Formats:**
+    - BAM/SAM files
+    - PLINK binary files
+    - Custom genomic formats
+    - Legacy variant files
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Data Creation & Generation
+
+<AccordionGroup>
+  <Accordion title="create_csv_from_data" icon="file-plus">
+    ### Generate CSV files from structured data
+    
+    **Usage:** Create datasets from query results
+    
+    **Description:**
+    Create well-formatted CSV files from structured data sources such as SQL query results, JSON objects, or Python dictionaries. Ideal for exporting analysis results and sharing data in standardized format.
+    
+    **Use Cases:**
+    - Exporting SQL query results
+    - Converting JSON to CSV
+    - Creating reports from analysis output
+    - Generating datasets for sharing
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## VCF Operations
+
+<AccordionGroup>
+  <Accordion title="check_vcf_compatibility" icon="circle-check">
+    ### Validate VCF file compatibility
+    
+    **Usage:** File validation and format checking
+    
+    **Description:**
+    Verify VCF file compliance with standard specifications including header format, variant information fields, and sample columns. Identifies and reports format issues before processing with downstream tools.
+    
+    **Validation Checks:**
+    - Header format compliance
+    - Field completeness
+    - Data type validation
+    - Standard compliance
+  </Accordion>
+
+  <Accordion title="index_vcf" icon="list-ol">
+    ### Create index files for VCF datasets
+    
+    **Usage:** Optimize VCF file access and querying
+    
+    **Description:**
+    Generate tabix or CSI indices for VCF files to enable fast random access and efficient querying of specific genomic regions without scanning the entire file.
+    
+    **Benefits:**
+    - Faster region-based queries
+    - Reduced memory usage
+    - Improved tool compatibility
+    - Essential for large VCF files
+  </Accordion>
+
+  <Accordion title="convert_ids_in_csv_using_vcf" icon="tag">
+    ### Map and convert identifiers using VCF
+    
+    **Usage:** Identifier mapping and conversion
+    
+    **Description:**
+    Use VCF file information to map and convert identifiers in CSV data, enabling consistent naming across datasets. Supports mapping between different identifier systems (gene names, RSIDs, etc.).
+    
+    **Mapping Capabilities:**
+    - RSID to gene name conversion
+    - Cross-database identifier matching
+    - Bulk identifier updates
+    - Validation of mapped IDs
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Variant Filtering
+
+<AccordionGroup>
+  <Accordion title="filter_vcf_by_rsids" icon="filter">
+    ### Filter variants by specific RSIDs
+    
+    **Usage:** Extract relevant variants from VCF
+    
+    **Description:**
+    Extract specific variants from VCF files based on their RSID identifiers. Useful for focusing analysis on known variants of interest or filtering out variants not present in public databases.
+    
+    **Features:**
+    - Single or multiple RSID filtering
+    - Fast lookup using indexed VCF
+    - Preserves full variant information
+    - Supports batch operations
+  </Accordion>
+
+  <Accordion title="filter_vcf_by_genes" icon="magnifying-glass">
+    ### Extract variants from specific genes
+    
+    **Usage:** Gene-based variant filtering
+    
+    **Description:**
+    Filter VCF files to extract variants located within specific genes of interest. Supports both precise gene coordinates and approximate region-based filtering for functional variant analysis.
+    
+    **Filtering Options:**
+    - Exact gene boundary filtering
+    - Extended region filtering (±N kb)
+    - Multiple gene selection
+    - Transcript-aware filtering
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Best Practices
+
+<Note>
+  Always validate your VCF files using `check_vcf_compatibility` before downstream analysis to ensure format compliance and prevent processing errors.
+</Note>
+
+<Tip>
+  Index your VCF files with `index_vcf` before performing multiple queries to significantly improve performance.
+</Tip>
+
+## Common Workflow
+
+```mermaid
+graph LR
+    A[Raw Data] --> B[Format Conversion]
+    B --> C[VCF Validation]
+    C --> D[Index VCF]
+    D --> E[Filter Variants]
+    E --> F[Analysis Ready]
+```
+
+<Steps>
+  <Step title="Convert to VCF">
+    Use `genomic_to_vcf` or `csv_to_vcf` to convert your data to VCF format
+  </Step>
+  <Step title="Validate">
+    Run `check_vcf_compatibility` to ensure format compliance
+  </Step>
+  <Step title="Index">
+    Create indices with `index_vcf` for efficient querying
+  </Step>
+  <Step title="Filter">
+    Apply gene or RSID filters as needed for your analysis
+  </Step>
+</Steps>

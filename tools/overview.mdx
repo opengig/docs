@@ -1,0 +1,90 @@
+---
+title: "Tools Overview"
+description: "Comprehensive suite of genomic analysis tools for data processing, analysis, and visualization"
+---
+
+## Introduction
+
+Our platform provides a comprehensive set of tools designed for genomic data analysis, covering the entire workflow from data conversion to advanced statistical analysis. These tools are organized into five main categories to help you efficiently process, analyze, and interpret genomic data.
+
+## Tool Categories
+
+<CardGroup cols={2}>
+  <Card
+    title="Data Conversion & Processing"
+    icon="arrow-right-arrow-left"
+    href="/tools/data-conversion"
+  >
+    12 tools for converting, filtering, and processing genomic data formats
+  </Card>
+  <Card
+    title="Analysis & Querying"
+    icon="magnifying-glass-chart"
+    href="/tools/analysis-querying"
+  >
+    8 tools for statistical analysis and data exploration
+  </Card>
+  <Card
+    title="ANOVA Tools"
+    icon="chart-line"
+    href="/tools/anova"
+  >
+    12 specialized tools for variance analysis in genomic studies
+  </Card>
+  <Card
+    title="GWAS Tools"
+    icon="dna"
+    href="/tools/gwas"
+  >
+    4 tools for genome-wide association studies
+  </Card>
+  <Card
+    title="Knowledge Base & Search"
+    icon="book"
+    href="/tools/knowledge"
+  >
+    RAG-powered semantic search for genomic information
+  </Card>
+</CardGroup>
+
+## Quick Start
+
+<Steps>
+  <Step title="Choose your category">
+    Select the appropriate tool category based on your analysis needs
+  </Step>
+  <Step title="Review tool documentation">
+    Each tool page includes detailed usage instructions and examples
+  </Step>
+  <Step title="Start analyzing">
+    Follow the specific tool documentation to begin your analysis
+  </Step>
+</Steps>
+
+## Common Workflows
+
+### VCF Processing Pipeline
+1. **Convert** genomic data to VCF format using `genomic_to_vcf`
+2. **Validate** compatibility with `check_vcf_compatibility`
+3. **Index** the VCF file using `index_vcf`
+4. **Filter** variants by genes or RSIDs as needed
+
+### ANOVA Analysis Workflow
+1. **Plan** and validate inputs with `plan_anova_inputs`
+2. **Map** sample identifiers using `anova_id_conversion` or `anova_wes_id_mapping`
+3. **Run** ANOVA analysis with `anova_with_vcf`
+4. **Filter** coding variants using `anova_filter_coding_variants`
+5. **Compare** frequencies with `anova_reference_allele_freq`
+6. **Prioritize** variants using `anova_freq_diff_topk`
+
+### GWAS Analysis Workflow
+1. **Prepare** PLINK inputs with `plan_plink_gwas_inputs`
+2. **Execute** GWAS analysis using `run_plink_gwas`
+3. **Visualize** results with `create_manhattan_plot`
+4. **Identify** significant loci and follow up
+
+### Statistical Analysis Workflow
+1. **Prepare** data using conversion tools
+2. **Analyze** with SQL queries or ANOVA tests
+3. **Visualize** results with Manhattan plots (for GWAS)
+4. **Interpret** findings using the knowledge base search
