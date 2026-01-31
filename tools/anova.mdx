@@ -21,10 +21,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Compare group means with standard ANOVA designs and clear, publication-ready outputs.
     
-    **Highlights:**
-    - One-way, two-way, and multivariate ANOVA
-    - Optional post‑hoc comparisons and effect sizes
-    - Built‑in multiple‑testing adjustments
+
   </Accordion>
 
   <Accordion title="plan_anova_inputs" icon="list-check">
@@ -35,10 +32,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Validate inputs, group structure, and data quality before running ANOVA.
     
-    **Checks include:**
-    - Normality and variance balance
-    - Sample size and group balance
-    - Missing data and outliers
+
   </Accordion>
 
   <Accordion title="anova_with_vcf" icon="dna">
@@ -49,10 +43,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Run ANOVA directly on VCF genotypes to find variants associated with group differences.
     
-    **Workflow:**
-    1. Extract genotypes and join phenotypes
-    2. Run ANOVA per variant with corrections
-    3. Export significant results
+
   </Accordion>
 
   <Accordion title="anova_sql_query" icon="database">
@@ -63,9 +54,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Generate SQL that prepares grouped data for ANOVA at scale without full in‑memory loading.
     
-    **Capabilities:**
-    - Grouped query templates
-    - Efficient aggregation and pre‑filters
+
   </Accordion>
 </AccordionGroup>
 
@@ -82,11 +71,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Map and convert sample or variant identifiers in ANOVA datasets to ensure consistent naming and proper grouping across different data sources.
     
-    **Conversion Types:**
-    - Sample ID harmonization
-    - Variant ID mapping
-    - Gene symbol updates
-    - Cross-reference matching
+
   </Accordion>
 
   <Accordion title="anova_wes_id_mapping" icon="id-card">
@@ -97,11 +82,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Manage and convert sample identifiers specific to whole exome sequencing (WES) datasets. Handles mapping between sequencing IDs, clinical IDs, and analysis sample codes.
     
-    **ID Types Handled:**
-    - Sequencing run IDs
-    - Clinical/patient IDs
-    - Sample barcodes
-    - Analysis identifiers
+
   </Accordion>
 
   <Accordion title="anova_rsids_for_genes" icon="magnifying-glass-location">
@@ -112,11 +93,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Retrieve all RSID identifiers (SNP IDs) for variants located within specified genes. Essential for targeted variant analysis and results interpretation.
     
-    **Features:**
-    - Gene boundary lookup
-    - Extended region support (±N kb)
-    - Bulk gene processing
-    - Annotation enrichment
+
   </Accordion>
 </AccordionGroup>
 
@@ -133,11 +110,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Filter ANOVA results to focus on specific variants of interest identified by their RSID. Enables prioritization of findings for validation and interpretation.
     
-    **Use Cases:**
-    - Focus on known variants
-    - Validate previous findings
-    - Filter candidate variants
-    - Prioritize for replication
+
   </Accordion>
 
   <Accordion title="anova_filter_coding_variants" icon="code">
@@ -148,18 +121,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Extract variants that fall within protein-coding sequences from ANOVA results. Prioritizes variants with higher likelihood of functional impact on gene expression.
     
-    **Filtering Criteria:**
-    - Exonic variants only
-    - Splice site variants
-    - UTR variants (optional)
-    - Functional annotations
-    
-    **Variant Types Included:**
-    - Missense
-    - Nonsense
-    - Frameshift
-    - In-frame indels
-    - Splice variants
+
   </Accordion>
 </AccordionGroup>
 
@@ -176,11 +138,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Compute allele frequencies for variants within your study cohort. Useful for assessing variant prevalence and comparing against population databases.
     
-    **Calculations:**
-    - Minor allele frequency (MAF)
-    - Genotype frequencies
-    - Hardy-Weinberg equilibrium
-    - Group-specific frequencies
+
   </Accordion>
 
   <Accordion title="anova_reference_allele_freq" icon="globe">
@@ -191,18 +149,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Retrieve allele frequencies from reference populations (1000 Genomes, gnomAD) for comparison with cohort frequencies. Helps identify variants with unusual population distributions.
     
-    **Reference Databases:**
-    - 1000 Genomes Project
-    - gnomAD (v2/v3)
-    - ExAC
-    - TOPMed
-    
-    **Population Groups:**
-    - African (AFR)
-    - American (AMR)
-    - East Asian (EAS)
-    - European (EUR)
-    - South Asian (SAS)
+
   </Accordion>
 
   <Accordion title="anova_freq_diff_topk" icon="ranking-star">
@@ -213,17 +160,7 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
     **Description:**
     Identify the most significantly different variants between study cohort and reference populations ranked by frequency difference. Prioritizes variants with largest effect sizes.
     
-    **Ranking Metrics:**
-    - Absolute frequency difference
-    - Fold-change
-    - Chi-square statistic
-    - Fisher's exact test p-value
-    
-    **Output:**
-    - Top K ranked variants
-    - Frequency comparisons
-    - Statistical significance
-    - Effect size measures
+
   </Accordion>
 </AccordionGroup>
 
@@ -232,23 +169,19 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
 ## Complete ANOVA Workflow
 
 <Steps>
-  <Step title="Plan & Validate">
-    Use `plan_anova_inputs` to validate your data meets ANOVA assumptions
+  <Step title="Part C: Input Prep & ANOVA">
+    1. <b>sql_query</b> – Filter phenotype data with SQL
+    2. <b>id_conversion</b> – Convert subject IDs and prepare phenotype table
+    3. <b>wes_id_mapping</b> – Map phenotype IDs to WES column names
+    4. <b>rsids_for_genes</b> – Extract rsIDs for gene lists
+    5. <b>filter_by_rsid</b> – Filter variants by RSID list
   </Step>
-  <Step title="Map Identifiers">
-    Apply `anova_id_conversion` or `anova_wes_id_mapping` for consistent naming
-  </Step>
-  <Step title="Run Analysis">
-    Execute `anova_analysis` or `anova_with_vcf` for your variant data
-  </Step>
-  <Step title="Filter Results">
-    Apply filters like `anova_filter_coding_variants` to prioritize findings
-  </Step>
-  <Step title="Frequency Analysis">
-    Compare with reference populations using `anova_reference_allele_freq`
-  </Step>
-  <Step title="Prioritize">
-    Rank variants with `anova_freq_diff_topk` for follow-up studies
+  <Step title="Part D: Filtering & Frequency Analysis">
+    6. <b>filter_coding_variants</b> – Filter variants to coding RSIDs only
+    7. <b>cohort_allele_freq</b> – Compute cohort allele frequencies
+    8. <b>reference_allele_freq</b> – Look up reference population frequencies
+    9. <b>freq_diff_topk</b> – Select top frequency differences (two-sided)
+    10. <b>anova</b> – Run ANOVA analysis per RSID (final step)
   </Step>
 </Steps>
 
@@ -256,70 +189,40 @@ This comprehensive suite of 12 tools is specifically designed for performing Ana
 
 ## Workflow Diagram
 
-### MCP Tools for ANOVA Workflow
+### ANOVA Study Workflow
+
+```mermaid
+graph LR
+  subgraph PartC [Part C — Input prep & ANOVA]
+    sql_query["sql_query\n(Filter phenotype data with SQL)"]
+    id_conversion["id_conversion\n(Convert subject IDs)"]
+    rsids_for_genes["rsids_for_genes\n(Extract rsIDs for genes)"]
+    filter_by_rsid["filter_by_rsid\n(Filter variants by rsID)"]
+    wes_id_mapping["wes_id_mapping\n(Map phenotype IDs to WES)"]
+    anova["anova\n(Run ANOVA per rsID)"]
+  end
+  subgraph PartD [Part D — Filtering & Frequency Analysis]
+    filter_coding_variants["filter_coding_variants\n(Filter to coding rsIDs)"]
+    cohort_allele_freq["cohort_allele_freq\n(Compute cohort allele frequencies)"]
+    reference_allele_freq["reference_allele_freq\n(Look up reference frequencies)"]
+    freq_diff_topk["freq_diff_topk\n(Select top frequency differences)"]
+  end
+
+  sql_query --> id_conversion --> wes_id_mapping --> rsids_for_genes --> filter_by_rsid --> filter_coding_variants --> cohort_allele_freq --> reference_allele_freq --> freq_diff_topk --> anova
+```
 
 **Part C Tools:**
-1. `sql_query` - Filter phenotype data with SQL
-2. `id_conversion` - Convert subject IDs and prepare phenotype table
-3. `rsids_for_genes` - Extract rsIDs for gene lists
-4. `filter_by_rsid` - Filter variants by rsID list
-5. `anova` - Run ANOVA analysis per rsID
-6. `wes_id_mapping` - Map phenotype IDs to WES column names
+- `sql_query` — Filter phenotype data with SQL
+- `id_conversion` — Convert subject IDs and prepare phenotype table
+- `wes_id_mapping` — Map phenotype IDs to WES column names
+- `rsids_for_genes` — Extract rsIDs for gene lists
+- `filter_by_rsid` — Filter variants by RSID list
 
 **Part D Tools:**
-7. `filter_coding_variants` - Filter variants to coding rsIDs only
-8. `cohort_allele_freq` - Compute cohort allele frequencies
-9. `reference_allele_freq` - Look up European reference frequencies
-10. `freq_diff_topk` - Select top frequency differences (two-sided)
-
----
-
-## Best Practices
-
-<Card title="Assumption Testing" icon="clipboard-check">
-  Always run `plan_anova_inputs` before analysis to ensure your data meets ANOVA assumptions
-</Card>
-
-<Card title="Multiple Testing" icon="shield-halved">
-  Apply appropriate multiple testing corrections (Bonferroni, FDR) for genome-wide analyses
-</Card>
-
-<Card title="Effect Size" icon="ruler">
-  Don't rely solely on p-values—check effect sizes and frequency differences for biological significance
-</Card>
-
----
-
-## Tips & Tricks
-
-<Tip>
-  **Coding Variants First**: Start with `anova_filter_coding_variants` to focus on variants most likely to have functional impact
-</Tip>
-
-<Warning>
-  **Sample Size**: ANOVA requires adequate sample sizes per group. Use `plan_anova_inputs` to check if your design has sufficient power
-</Warning>
-
-<Note>
-  **Reference Populations**: Choose reference populations that match your study cohort's ancestry for meaningful frequency comparisons
-</Note>
-
----
-
-## Common Use Cases
-
-### Case-Control ANOVA
-Compare variant frequencies between disease cases and healthy controls
-- Use `anova_with_vcf` with binary phenotype
-- Filter coding variants for functional focus
-- Compare frequencies with population databases
+- `filter_coding_variants` — Filter variants to coding RSIDs only
+- `cohort_allele_freq` — Compute cohort allele frequencies
+- `reference_allele_freq` — Look up reference population frequencies
+- `freq_diff_topk` — Select top frequency differences (two-sided)
+- `anova` — Run ANOVA analysis per RSID (final step)
 
 
-
-### WES Analysis Pipeline
-Complete workflow for whole exome sequencing studies
-1. Map WES sample IDs
-2. Extract coding variants
-3. Run ANOVA across phenotype groups
-4. Prioritize by frequency differences
-5. Validate top candidates

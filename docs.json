@@ -7,7 +7,7 @@
     "light": "#C4B5FD",
     "dark": "#6D28D9"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/logo.png",
   "navigation": {
     "tabs": [
       {
@@ -16,7 +16,8 @@
           {
             "group": "Getting started",
             "pages": [
-              "index"
+              "index",
+              "quickstart"
             ]
           }
         ]
@@ -50,15 +51,11 @@
   },
   "logo": {
     "light": "/logo/logo.png",
-    "dark": "/logo/logo.png"
+    "dark": "/logo/logo.png",
+    "text": "SeqGPT"
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
+    "links": [],
     "primary": {
       "type": "button",
       "label": "Dashboard",

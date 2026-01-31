@@ -101,6 +101,7 @@ Quick reference table of all available tools organized by category.
 
 ---
 
+
 ## Common Workflows
 
 ### Basic Data Processing
@@ -122,13 +123,42 @@ graph LR
     D --> E[Significant Loci]
 ```
 
-### ANOVA Study Workflow
+### Complete ANOVA Workflow
+<Steps>
+  <Step title="Part C: Input Prep & ANOVA">
+    1. <b>sql_query</b> – Filter phenotype data with SQL<br/>
+    2. <b>id_conversion</b> – Convert subject IDs and prepare phenotype table<br/>
+    3. <b>wes_id_mapping</b> – Map phenotype IDs to WES column names<br/>
+    4. <b>rsids_for_genes</b> – Extract rsIDs for gene lists<br/>
+    5. <b>filter_by_rsid</b> – Filter variants by RSID list
+  </Step>
+  <Step title="Part D: Filtering & Frequency Analysis">
+    6. <b>filter_coding_variants</b> – Filter variants to coding rsIDs only<br/>
+    7. <b>cohort_allele_freq</b> – Compute cohort allele frequencies<br/>
+    8. <b>reference_allele_freq</b> – Look up European reference frequencies<br/>
+    9. <b>freq_diff_topk</b> – Select top frequency differences (two-sided)
+    10. <b>anova</b> – Run ANOVA analysis per RSID (final step)
+  </Step>
+</Steps>
+
 ```mermaid
 graph LR
-    A[VCF Data] --> B[plan_anova_inputs]
-    B --> C[anova_with_vcf]
-    C --> D[anova_filter_coding_variants]
-    D --> E[anova_freq_diff_topk]
+  subgraph PartC [Part C — Input prep & ANOVA]
+    sql_query["sql_query\n(Filter phenotype data with SQL)"]
+    id_conversion["id_conversion\n(Convert subject IDs)"]
+    wes_id_mapping["wes_id_mapping\n(Map phenotype IDs to WES)"]
+    rsids_for_genes["rsids_for_genes\n(Extract rsIDs for genes)"]
+    filter_by_rsid["filter_by_rsid\n(Filter variants by rsID)"]
+  end
+  subgraph PartD [Part D — Filtering & Frequency Analysis]
+    filter_coding_variants["filter_coding_variants\n(Filter to coding rsIDs)"]
+    cohort_allele_freq["cohort_allele_freq\n(Compute cohort allele frequencies)"]
+    reference_allele_freq["reference_allele_freq\n(Look up EUR reference frequencies)"]
+    freq_diff_topk["freq_diff_topk\n(Select top frequency differences)"]
+    anova["anova\n(Run ANOVA per rsID)"]
+  end
+
+  sql_query --> id_conversion --> wes_id_mapping --> rsids_for_genes --> filter_by_rsid --> filter_coding_variants --> cohort_allele_freq --> reference_allele_freq --> freq_diff_topk --> anova
 ```
 
 ---
