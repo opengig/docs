@@ -114,7 +114,7 @@
     "primary": {
       "type": "button",
       "label": "Sign in",
-      "href": "https://seqgpt.ai"
+      "href": "https://app.seqgpt.ai/home"
     }
   },
   "contextual": {
