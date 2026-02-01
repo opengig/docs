@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: seqgpt-docs
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       # Mount the docs for hot-reload during development
       - .:/app
