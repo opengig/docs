@@ -18,14 +18,9 @@
             "pages": [
               "index"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Tools",
-        "groups": [
+          },
           {
-            "group": "Overview",
+            "group": "Tools Overview",
             "pages": [
               "tools/overview",
               "tools/quick-reference"
@@ -34,11 +29,72 @@
           {
             "group": "Tool Categories",
             "pages": [
-              "tools/data-conversion",
-              "tools/analysis-querying",
-              "tools/anova",
-              "tools/gwas",
-              "tools/knowledge"
+              {
+                "group": "ANOVA Tools",
+                "pages": [
+                  "tools/anova/index",
+                  "tools/anova/anova_analysis",
+                  "tools/anova/plan_anova_inputs",
+                  "tools/anova/anova_with_vcf",
+                  "tools/anova/anova_sql_query",
+                  "tools/anova/anova_id_conversion",
+                  "tools/anova/anova_wes_id_mapping",
+                  "tools/anova/anova_rsids_for_genes",
+                  "tools/anova/anova_filter_by_rsid",
+                  "tools/anova/anova_filter_coding_variants",
+                  "tools/anova/anova_cohort_allele_freq",
+                  "tools/anova/anova_reference_allele_freq",
+                  "tools/anova/anova_freq_diff_topk"
+                ]
+              },
+              {
+                "group": "GWAS Tools",
+                "pages": [
+                  "tools/gwas/index",
+                  "tools/gwas/plan_plink_gwas_inputs",
+                  "tools/gwas/generate_gwas_sample_data",
+                  "tools/gwas/run_plink_gwas",
+                  "tools/gwas/create_manhattan_plot"
+                ]
+              },
+              {
+                "group": "Data Conversion & Processing",
+                "pages": [
+                  "tools/data-conversion/index",
+                  "tools/data-conversion/first_k_lines_of_csv",
+                  "tools/data-conversion/csv_to_vcf",
+                  "tools/data-conversion/convert_xlsx_to_csv",
+                  "tools/data-conversion/convert_tsv_to_csv",
+                  "tools/data-conversion/genomic_to_vcf",
+                  "tools/data-conversion/create_csv_from_data",
+                  "tools/data-conversion/check_vcf_compatibility",
+                  "tools/data-conversion/index_vcf",
+                  "tools/data-conversion/convert_ids_in_csv_using_vcf",
+                  "tools/data-conversion/filter_vcf_by_rsids",
+                  "tools/data-conversion/filter_vcf_by_genes"
+                ]
+              },
+              {
+                "group": "Analysis & Querying",
+                "pages": [
+                  "tools/analysis-querying/index",
+                  "tools/analysis-querying/analyze_csv",
+                  "tools/analysis-querying/run_sql_query",
+                  "tools/analysis-querying/build_sql_query_for_csv",
+                  "tools/analysis-querying/run_sql_query_from_file",
+                  "tools/analysis-querying/describe_csv_columns_with_html",
+                  "tools/analysis-querying/describe_csv_columns_with_html_smart",
+                  "tools/analysis-querying/make_example_table",
+                  "tools/analysis-querying/get_gene_network"
+                ]
+              },
+              {
+                "group": "Knowledge Base & Search",
+                "pages": [
+                  "tools/knowledge/index",
+                  "tools/knowledge/search_knowledge_base"
+                ]
+              }
             ]
           }
         ]
@@ -57,8 +113,8 @@
     "links": [],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Sign in",
+      "href": "https://seqgpt.ai"
     }
   },
   "contextual": {
@@ -75,5 +131,6 @@
   },
   "footer": {
     "socials": {}
-  }
+  },
+  "css": "global.css"
 }
